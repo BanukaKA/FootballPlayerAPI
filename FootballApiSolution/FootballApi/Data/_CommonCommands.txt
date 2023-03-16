@@ -1,0 +1,5 @@
+﻿Add-Migration -Context FootballContext -o Data\FootballMigrations Initial
+Update-Database -Context FootballContext
+
+Add To Migration:
+ExtraMigration.Steps(migrationBuilder);

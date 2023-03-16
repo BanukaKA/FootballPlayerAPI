@@ -1,0 +1,90 @@
+﻿<Page x:ConnectionId='1'
+    x:Class="FootballUWPClient.TeamDetailPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FootballUWPClient"
+    xmlns:data="using:FootballUWPClient.Models"
+    xmlns:converters="using:FootballUWPClient.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Resources>
+        <converters:DateTimeToOffsetConverter x:Key="DateTimeToOffsetConverter"/>
+        <converters:ByteToStringConverter x:Key="ByteToStringConverter"/>
+    </Page.Resources>
+
+    <ScrollViewer>
+        <Grid x:ConnectionId='2' x:Name="LayoutRoot">
+            <Grid.Background>
+                <ImageBrush Stretch="UniformToFill" ImageSource="Assets/med.jpg" Opacity="0.2"/>
+            </Grid.Background>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!--TitlePanel contains the name of the application and page title-->
+            <StackPanel Grid.Row="0" Margin="0,12,0,6">
+                <TextBlock Text="Football" FontSize="30" Margin="12,0,0,0"/>
+                <TextBlock x:ConnectionId='16' x:Name="txtPageTitle"                            FontSize="20" Margin="13,3,0,3" />
+                <Rectangle Fill="#FFF4F4F5" Height="1" Stroke="Black" HorizontalAlignment="Stretch" Margin="0,2,0,2"/>
+            </StackPanel>
+
+            <!--ContentPanel - place additional content here-->
+            <Grid x:ConnectionId='3' x:Name="ContentPanel" Grid.Row="1" Margin="10,0,10,0">
+                <Grid x:ConnectionId='4' Name="teamDisplayGrid">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock x:ConnectionId='5' Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Margin="3,0,0,0"
+                           VerticalAlignment="Center" Name="nameTextBlock" Text="Team Name" />
+                    <TextBox x:ConnectionId='6' Grid.Row="0" Grid.Column="1" Height="30" Name="nameTextBox" 
+                         MaxLength="30" InputScope="Text"                                       AcceptsReturn="False" />
+
+                    <TextBlock x:ConnectionId='7' Grid.Row="1" Grid.Column="0"  HorizontalAlignment="Left"  Margin="3,0,0,0"
+                           VerticalAlignment="Center" Name="budgetTextBlock" Text="Budget" />
+                    <TextBox x:ConnectionId='8' Grid.Row="1" Grid.Column="1" Height="30" Name="budgetTextBox" 
+                         MaxLength="50"                                           AcceptsReturn="True" InputScope="Text" />
+
+                    <TextBlock x:ConnectionId='9' Grid.Row="3" Grid.Column="0"  HorizontalAlignment="Left"  Margin="3,0,0,0"
+                           VerticalAlignment="Center" Name="playerCountTextBlock" Text="Number of Players" />
+                    <TextBox x:ConnectionId='10' Grid.Row="3" Grid.Column="1" Height="30" Name="playerCountTextBox" 
+                         MaxLength="50"                                                AcceptsReturn="True" InputScope="Text" IsReadOnly="True"/>
+                    
+                    <TextBlock x:ConnectionId='11' Grid.Row="4" Grid.Column="0"  HorizontalAlignment="Left"  Margin="3,0,6,0"
+                           VerticalAlignment="Center"  Name="leagueTextBlock" Text="League" />
+
+                    <ComboBox x:ConnectionId='12' x:Name="LeagueCombo" Grid.Column="1" Grid.Row="4" 
+                          HorizontalAlignment="Stretch" VerticalAlignment="Center"
+                          SelectedValuePath="ID"  DisplayMemberPath="Name" 
+                          SelectedValue="{Binding LeagueID, Mode=TwoWay}"   />
+
+                    <RelativePanel Grid.Row="7" Grid.ColumnSpan="2">
+                        <Button x:ConnectionId='13' x:Name="btnDelete" Content="Delete" RelativePanel.LeftOf="btnSave"
+                                                Margin="6,6,0,6" />
+                        <Button x:ConnectionId='14' x:Name="btnSave" Content="Save" RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                              Margin="6,6,6,6" />
+                        <Button x:ConnectionId='15' x:Name="btnCancel" Content="Cancel" RelativePanel.RightOf="btnSave"
+                                                Margin="0,6,6,6" />
+                    </RelativePanel>
+                </Grid>
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+</Page>
+
