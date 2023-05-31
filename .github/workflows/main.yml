@@ -7,7 +7,7 @@ on:
     - main
 
 env:
-  AZURE_WEBAPP_NAME: current-time-service
+  AZURE_WEBAPP_NAME: FootballBKAApi
   AZURE_WEBAPP_PACKAGE_PATH: "./publish"
 
 jobs:
@@ -23,7 +23,7 @@ jobs:
           dotnet-version: '6.0.x'
           
       - name: Restore
-        run: dotnet restore ./CurrentTimeService.sln
+        run: dotnet restore ./FootballApiSolution.sln
         
       - name: Build
         run: dotnet build ./FootballApiSolution.sln --configuration Release --no-restore
